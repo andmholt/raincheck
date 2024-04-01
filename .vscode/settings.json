@@ -1,0 +1,10 @@
+{
+    "jest.runMode": {
+        "type": "on-demand",
+        "coverage": true
+    },
+    "typescript.preferences.quoteStyle": "single",
+    "javascript.preferences.quoteStyle": "single",
+    "javascript.format.semicolons": "remove",
+    "typescript.format.semicolons": "remove"
+}

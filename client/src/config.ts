@@ -3,15 +3,16 @@ import { createTheme } from '@mui/material'
 
 export const theme = createTheme({
     palette: {
+        // https://coolors.co/palette/461873-58148e-6910a8-8c07dd-9f21e3-b333e9-cb5df1-dc93f6-eabffa-f7ebfd
         primary: {
-            dark: '#ff0a54',
-            main: '#282828',
-            light: '#404040',
+            dark: '#58148e',
+            main: '#8c07dd',
+            light: '#eabffa',
         },
         secondary: {
-            dark: '#431c00',
-            main: '#ff0a54',
-            light: '#a97f58'
+            dark: '#404040',
+            main: '#808080',
+            light: '##f5f5f5'
         },
         background: {
             default: '#ffffff'

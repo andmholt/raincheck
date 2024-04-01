@@ -1,1 +1,1 @@
-# raincheck-web
+# raincheck

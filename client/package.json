@@ -1,5 +1,5 @@
 {
-  "name": "raincheck-web",
+  "name": "raincheck-client",
   "version": "1.0.0",
   "description": "",
   "main": "index.ts",
@@ -14,14 +14,20 @@
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.0",
     "@mui/material": "^5.15.14",
+    "@mui/x-date-pickers": "^7.1.0",
     "@tanstack/react-query": "^5.28.9",
+    "add": "^2.0.6",
+    "dayjs": "^1.11.10",
     "env-cmd": "^10.1.0",
+    "mui-tel-input": "^5.1.2",
     "path": "^0.12.7",
+    "pnpm": "^8.15.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.22.3",
     "react-scripts": "^5.0.1",
-    "web-vitals": "^3.5.2"
+    "web-vitals": "^3.5.2",
+    "zustand": "^4.5.2"
   },
   "devDependencies": {
     "@tanstack/react-query-devtools": "^5.28.10",
