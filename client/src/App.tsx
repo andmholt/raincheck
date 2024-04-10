@@ -11,7 +11,7 @@ import {
 import { ScrollToTop } from './ScrollToTop'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import { theme } from './config'
-import { Landing, Privacy, Terms, Verify } from '@/pages'
+import { Landing, Privacy, Terms, Verify, Status } from '@/pages'
 import { LocalizationProvider } from '@mui/x-date-pickers'
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 
@@ -27,6 +27,7 @@ export const App = () => {
                                 <Routes>
                                     <Route path='/' element={<Landing />} />
                                     <Route path='/verify/:ticketId' element={<Verify />} />
+                                    <Route path='/status/:ticketId' element={<Status />} />
                                     <Route path='/terms' element={<Terms />} />
                                     <Route path='/privacy' element={<Privacy />} />
                                     {/* <Route path='*' element={<NotFound />} /> */}

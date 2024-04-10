@@ -1,4 +1,5 @@
 import { ticketRepo } from '@/repos'
+import { genRandomPhoneCode } from '@/util'
 
 
 type SubmitParams = {
@@ -9,7 +10,11 @@ type SubmitParams = {
 
 type VerifyPhoneParams = {
     ticketId: string
-    code: number
+    code: string
+}
+
+type GetStatusParams = {
+    ticketId: string
 }
 
 export const ticketService = {
@@ -31,15 +36,22 @@ export const ticketService = {
             meetupDate
         })
 
-        // if (matching === null) {
-        //     await ticketRepo.create({
-        //         phoneA,
-        //         phoneB,
-        //         phoneACode: 
-        //     })
-        // } else {
-        //     // 
-        // }
+        if (matching !== null) {
+            // send sms to phoneB
+            return matching.id
+        }
+
+        const ticket = await ticketRepo.create({
+            phoneA,
+            phoneB,
+            meetupDate,
+            phoneACode: genRandomPhoneCode(),
+            phoneBCode: genRandomPhoneCode()
+        })
+
+        // send sms to phoneA
+
+        return ticket.id
     },
 
     /**
@@ -64,5 +76,18 @@ export const ticketService = {
         }
 
         return false
+    },
+
+    /**
+     * Gets the status of the ticket
+     */
+    getStatus: async ({
+        ticketId
+    }: GetStatusParams) => {
+        const ticket = await ticketRepo.findOneById({ ticketId })
+        if (ticket === undefined) return undefined
+        if (ticket.phoneAVerified && ticket.phoneBVerified) return 'CANCELLED'
+        if (ticket.phoneAVerified) return 'PENDING'
+        return 'UNVERIFIED'
     }
 }

@@ -6,13 +6,7 @@ import { router } from '@/routers'
 import { cors } from '@/middleware'
 import { getIsDev } from './util'
 import { createServer } from 'http'
-import pino from 'pino'
-
-const logger = pino({
-    transport: {
-        target: 'pino-pretty'
-    },
-})
+import { logger } from './util'
 
 logger.info(`Starting in ${process.env.NODE_ENV} mode.`)
 
@@ -35,7 +29,7 @@ app.use((err: any, _: express.Request, res: express.Response) => {
     res.status(err.status || 500).json(err)
 })
 
-const port = process.env.PORT || 8080
+const port = process.env.PORT || 3000
 server.listen(port, () => {
     logger.info(`Server listening on port ${port}`)
 })

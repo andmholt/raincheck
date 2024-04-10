@@ -18,10 +18,10 @@ export const ticketRepo = {
     /**
      * Creates a new ticket
      */
-    create: async (ticket: NewTicket) => db
+    create: async (ticket: NewTicket) => (await db
         .insert(tickets)
         .values(ticket)
-        .returning(),
+        .returning())[0],
 
     /**
      * Try to find a matching ticket

@@ -5,7 +5,7 @@ export const Verify = () =>
     <Container maxWidth='sm'>
         <Box sx={{ height: '80px' }} />
         <Typography variant='h3' textAlign='center'>
-            verification code
+            Verification Code
         </Typography>
         <Typography sx={{ color: 'gray', textAlign: 'center' }}>(check your texts)</Typography>
         <Box sx={{ height: '40px' }} />

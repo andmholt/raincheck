@@ -1,0 +1,17 @@
+meta {
+  name: submit-ticket
+  type: http
+  seq: 1
+}
+
+post {
+  url: http://localhost:3000/api/ticket/
+  body: formUrlEncoded
+  auth: none
+}
+
+body:form-urlencoded {
+  phoneA: 1111111111
+  phoneB: 1234567890
+  meetupDate: 2024-04-10T00:00:00.000Z
+}
