@@ -9,9 +9,10 @@ export const OtherPhone = () => {
     } = useOtherPhone()
     return (
         <MuiTelInput
-            label="Your date's phone"
+            label='Their phone'
             forceCallingCode
             defaultCountry='US'
+            onlyCountries={['US']}
             value={otherPhone}
             error={otherPhoneError !== null}
             helperText={otherPhoneError}

@@ -13,13 +13,17 @@ interface SubmitTicketParams {
     onError?: ((error: Error, variables: SubmitTicketBody, context: unknown) => unknown) | undefined
 }
 
-export const useSubmitTicket = (p?: SubmitTicketParams) => useMutation({
+interface SubmitTicketRes {
+    ticketId: string
+}
+
+export const useSubmitTicket = (p?: SubmitTicketParams) => useMutation<SubmitTicketRes, Error, SubmitTicketBody>({
     ...p,
-    mutationFn: ({
+    mutationFn: async ({
             phoneA,
             phoneB,
             meetupDate
-        }: SubmitTicketBody) => axios.post(`${getApiBaseUrl()}/ticket`, {
+        }: SubmitTicketBody) => await axios.post(`${getApiBaseUrl()}/ticket`, {
             phoneA,
             phoneB,
             meetupDate

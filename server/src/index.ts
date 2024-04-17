@@ -21,6 +21,8 @@ app.use(cors)
 app.use(express.static('../client/build'))
 app.use('/api', router)
 
+app.use(express.static('../client/build'))
+
 app.use((req, res, next) => {
   next(createError(404))
 });
@@ -29,7 +31,7 @@ app.use((err: any, _: express.Request, res: express.Response) => {
     res.status(err.status || 500).json(err)
 })
 
-const port = process.env.PORT || 3000
+const port = process.env.PORT || 8080
 server.listen(port, () => {
     logger.info(`Server listening on port ${port}`)
 })

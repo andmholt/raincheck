@@ -18,6 +18,12 @@ export const getOrigin = (): string => {
     return origin
 }
 
+export const getClientOrigin = (): string => {
+    const origin = process.env.CLIENT_ORIGIN
+    if (!origin) throw new Error('CLIENT_ORIGIN is not defined')
+    return origin
+}
+
 export const getDbHost = (): string => {
     const host = process.env.DB_HOST
     if (!host) throw new Error('DB_HOST is not defined')
@@ -46,4 +52,22 @@ export const getDbName = (): string => {
     const name = process.env.DB_NAME
     if (!name) throw new Error('DB_NAME is not defined')
     return name
+}
+
+export const getVonageApiKey = (): string => {
+    const key = process.env.VONAGE_API_KEY
+    if (!key) throw new Error('VONAGE_API_KEY is not defined')
+    return key
+}
+
+export const getVonageApiSecret = (): string => {
+    const secret = process.env.VONAGE_API_SECRET
+    if (!secret) throw new Error('VONAGE_API_SECRET is not defined')
+    return secret
+}
+
+export const getVonageFromPhone = (): string => {
+    const from = process.env.VONAGE_FROM_PHONE
+    if (!from) throw new Error('VONAGE_FROM_PHONE is not defined')
+    return from
 }

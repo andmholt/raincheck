@@ -1,5 +1,6 @@
 import { ticketRepo } from '@/repos'
 import { genRandomPhoneCode } from '@/util'
+import { vonageService } from './vonage.service'
 
 
 type SubmitParams = {
@@ -16,6 +17,11 @@ type VerifyPhoneParams = {
 type GetStatusParams = {
     ticketId: string
 }
+
+
+const createMsg = (code: string) => 
+    `So you're trying to raincheck?
+    Here's your verification code: ${code}`
 
 export const ticketService = {
 
@@ -50,7 +56,10 @@ export const ticketService = {
         })
 
         // send sms to phoneA
-
+        vonageService.sendSms({
+            to: phoneA,
+            text: createMsg(ticket.phoneACode)
+        })
         return ticket.id
     },
 

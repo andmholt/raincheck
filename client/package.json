@@ -5,7 +5,9 @@
   "main": "index.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "./node_modules/.bin/env-cmd -e development craco start"
+    "start": "./node_modules/.bin/env-cmd -e development craco start",
+    "build:dev": "",
+    "build:prod": ""
   },
   "keywords": [],
   "author": "",

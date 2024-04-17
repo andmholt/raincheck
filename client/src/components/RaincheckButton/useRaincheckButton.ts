@@ -1,8 +1,13 @@
 import { useLandingStore } from '@/stores'
 import { matchIsValidTel } from 'mui-tel-input'
 import dayjs from 'dayjs'
+import { useSubmitTicket } from '@/services'
+import { useNavigate } from 'react-router-dom'
+import { useState } from 'react'
 
 export const useRaincheckButton = () => {
+
+    const navigate = useNavigate()
 
     const [
         yourPhone,
@@ -20,7 +25,21 @@ export const useRaincheckButton = () => {
         s.setDateError
     ])
 
-    const handleClick = () => {
+    const [isLoading, setIsLoading] = useState(false)
+
+    const { mutateAsync: submitTicket } = useSubmitTicket({
+        onSuccess: (d) => {
+            setIsLoading(false)
+            const ticketId = d.ticketId
+            navigate(`/verify/${ticketId}`)
+        },
+        onError: () => {
+            setIsLoading(false)
+            console.log('Error submitting')
+        }
+    })
+
+    const handleClick = async () => {
         if (!matchIsValidTel(yourPhone)) {
             setYourPhoneError('Invalid phone number')
             return
@@ -51,9 +70,17 @@ export const useRaincheckButton = () => {
             return
         }
         setDateError(null)
+
+        setIsLoading(true)
+        await submitTicket({
+            phoneA: yourPhone,
+            phoneB: otherPhone,
+            meetupDate: date.toDate()
+        })
     }
 
     return {
-        handleClick
+        handleClick,
+        isLoading
     }
 }

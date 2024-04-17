@@ -12,6 +12,7 @@ export const YourPhone = () => {
             label='Your phone'
             value={yourPhone}
             forceCallingCode
+            onlyCountries={['US']}
             defaultCountry='US'
             error={yourPhoneError !== null}
             helperText={yourPhoneError}
